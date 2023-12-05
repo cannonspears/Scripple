@@ -10,6 +10,12 @@ export default function Home() {
           notesGPT
         </span>
       </div>
+      <div className="max-w-prose text-center">
+        <p>A powerful note-taking app with AI integration.</p>
+        <p>
+          Built with OpenAI, Pinecone, Next.js, Shadcn UI, Clerk, and MongoDB.
+        </p>
+      </div>
     </main>
   );
 }
