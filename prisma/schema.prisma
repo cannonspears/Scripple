@@ -14,7 +14,7 @@ model Note {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   title String
   content String?
-  iserId String
+  userId String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
