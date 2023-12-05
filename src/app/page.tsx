@@ -1,5 +1,7 @@
 import Image from "next/image";
 import logo from "@/assets/logo.png";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -16,6 +18,9 @@ export default function Home() {
           Built with OpenAI, Pinecone, Next.js, Shadcn UI, Clerk, and MongoDB.
         </p>
       </div>
+      <Button size="lg" asChild>
+        <Link href="/notes">Open</Link>
+      </Button>
     </main>
   );
 }
