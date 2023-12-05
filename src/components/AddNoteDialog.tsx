@@ -67,6 +67,7 @@ export default function AddNoteDialog({ open, setOpen }: AddNoteDialogProps) {
                 </FormItem>
               )}
             />
+            <DialogFooter></DialogFooter>
           </form>
         </Form>
       </DialogContent>
