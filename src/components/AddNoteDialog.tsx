@@ -18,6 +18,7 @@ import {
 } from "./ui/form";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
+import LoadingButton from "./ui/loading-button";
 
 interface AddNoteDialogProps {
   open: boolean;
@@ -67,7 +68,14 @@ export default function AddNoteDialog({ open, setOpen }: AddNoteDialogProps) {
                 </FormItem>
               )}
             />
-            <DialogFooter></DialogFooter>
+            <DialogFooter>
+              <LoadingButton
+                type="submit"
+                loading={form.formState.isSubmitting}
+              >
+                Submit
+              </LoadingButton>
+            </DialogFooter>
           </form>
         </Form>
       </DialogContent>
