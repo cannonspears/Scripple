@@ -21,6 +21,7 @@ import { Textarea } from "./ui/textarea";
 import LoadingButton from "./ui/loading-button";
 import { useRouter } from "next/navigation";
 import { Note } from "@prisma/client";
+import { useState } from "react";
 
 interface AddEditNoteDialogProps {
   open: boolean;
@@ -33,6 +34,8 @@ export default function AddEditNoteDialog({
   setOpen,
   noteToEdit,
 }: AddEditNoteDialogProps) {
+  const [deleteInProgress, setDeleteInProgress] = useState(false);
+
   const router = useRouter();
 
   const form = useForm<CreateNoteSchema>({
@@ -69,6 +72,27 @@ export default function AddEditNoteDialog({
     } catch (error) {
       console.error(error);
       alert("Something went wrong. Please try again.");
+    }
+  }
+
+  async function deleteNote() {
+    if (!noteToEdit) return;
+    setDeleteInProgress(true);
+    try {
+      const response = await fetch("/api/notes", {
+        method: "DELETE",
+        body: JSON.stringify({
+          id: noteToEdit.id,
+        }),
+      });
+      if (!response.ok) throw Error(`Status code: ${response.status}`);
+      router.refresh();
+      setOpen(false);
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setDeleteInProgress(false);
     }
   }
 
