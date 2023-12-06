@@ -47,7 +47,7 @@ export default function AddNoteDialog({ open, setOpen }: AddNoteDialogProps) {
       if (!response.ok) throw Error(`Status code: ${response.status}`);
 
       form.reset();
-      router.refresh;
+      router.refresh();
       setOpen(false);
     } catch (error) {
       console.error(error);
