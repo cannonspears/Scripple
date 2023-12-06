@@ -1,6 +1,7 @@
 import { auth } from "@clerk/nextjs";
 import prisma from "@/lib/db/prisma";
 import { Metadata } from "next";
+import Note from "@/components/Note";
 
 export const metadata: Metadata = {
   title: "notesGPT | Home",
@@ -13,5 +14,11 @@ export default async function NotesPage() {
 
   const allNotes = await prisma.note.findMany({ where: { userId } });
 
-  return <div>{JSON.stringify(allNotes)}</div>;
+  return (
+    <div>
+      {allNotes.map((note) => (
+        <Note note={note} key={note.id} />
+      ))}
+    </div>
+  );
 }
