@@ -19,6 +19,11 @@ export default async function NotesPage() {
       {allNotes.map((note) => (
         <Note note={note} key={note.id} />
       ))}
+      {allNotes.length === 0 && (
+        <div className="col-span-full text-center">
+          {"You don't have any notes yet."}
+        </div>
+      )}
     </div>
   );
 }
