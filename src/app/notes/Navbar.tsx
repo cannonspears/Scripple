@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { useState } from "react";
 import AddEditNoteDialog from "@/components/AddEditNoteDialog";
+import ThemeToggleButton from "@/components/ThemeToggleButton";
 
 export default function NavBar() {
   const [showAddEditNoteDialog, setShowAddEditNoteDialog] = useState(false);
@@ -27,6 +28,7 @@ export default function NavBar() {
                 elements: { avatarBox: { width: "2.5rem", height: "2.5rem" } },
               }}
             />
+            <ThemeToggleButton />
             <Button
               className="pl-2"
               onClick={() => setShowAddEditNoteDialog(true)}
