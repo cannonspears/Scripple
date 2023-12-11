@@ -44,6 +44,7 @@ export async function POST(req: Request) {
           metadata: { userId },
         },
       ]);
+
       return note;
     });
 
@@ -79,12 +80,22 @@ export async function PUT(req: Request) {
       return Response.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const updatedNote = await prisma.note.update({
-      where: { id },
-      data: {
-        title,
-        content,
-      },
+    const embedding = await getEmbeddingForNote(title, content);
+
+    const updatedNote = await prisma.$transaction(async (tx) => {
+      const updatedNote = await tx.note.update({
+        where: { id },
+        data: {
+          title,
+          content,
+        },
+      });
+
+      await notesIndex.upsert([
+        { id, values: embedding, metadata: { userId } },
+      ]);
+
+      return updatedNote;
     });
 
     return Response.json({ updatedNote }, { status: 200 });
