@@ -1,3 +1,4 @@
+import { notesIndex } from "@/lib/db/pinecone";
 import prisma from "@/lib/db/prisma";
 import { getEmbedding } from "@/lib/openai";
 import {
@@ -28,12 +29,22 @@ export async function POST(req: Request) {
 
     const embedding = await getEmbeddingForNote(title, content);
 
-    const note = await prisma.note.create({
-      data: {
-        title,
-        content,
-        userId,
-      },
+    const note = await prisma.$transaction(async (tx) => {
+      const note = await tx.note.create({
+        data: {
+          title,
+          content,
+          userId,
+        },
+      });
+      await notesIndex.upsert([
+        {
+          id: note.id,
+          values: embedding,
+          metadata: { userId },
+        },
+      ]);
+      return note;
     });
 
     return Response.json({ note }, { status: 201 });
