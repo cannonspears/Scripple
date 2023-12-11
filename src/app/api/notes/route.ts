@@ -130,7 +130,10 @@ export async function DELETE(req: Request) {
       return Response.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    await prisma.note.delete({ where: { id } });
+    await prisma.$transaction(async (tx) => {
+      await tx.note.delete({ where: { id } });
+      await notesIndex.deleteOne(id);
+    });
 
     return Response.json({ message: "Note deleted" }, { status: 200 });
   } catch (error) {
