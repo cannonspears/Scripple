@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { useChat } from "ai/react";
 import { XCircle } from "lucide-react";
 import { Input } from "./ui/input";
+import { Button } from "./ui/button";
 
 interface AIChatBoxProps {
   open: boolean;
@@ -37,6 +38,7 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
             onChange={handleInputChange}
             placeholder="Say something..."
           />
+          <Button type="submit">Send</Button>
         </form>
       </div>
     </div>
