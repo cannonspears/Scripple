@@ -6,6 +6,7 @@ import { Button } from "./ui/button";
 import { Message } from "ai";
 import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 interface AIChatBoxProps {
   open: boolean;
@@ -23,6 +24,21 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
     error,
   } = useChat();
 
+  const inputRef = useRef<HTMLInputElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  }, [messages]);
+
+  useEffect(() => {
+    if (open) {
+      inputRef.current?.focus();
+    }
+  }, [open]);
+
   return (
     <div
       className={cn(
@@ -34,7 +50,7 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
         <XCircle size={30} />
       </button>
       <div className="flex h-[600px] flex-col rounded border bg-background shadow-xl">
-        <div className="mt-3 h-full overflow-y-auto px-3">
+        <div className="mt-3 h-full overflow-y-auto px-3" ref={scrollRef}>
           {messages.map((message) => (
             <ChatMessage message={message} key={message.id} />
           ))}
@@ -44,6 +60,7 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
             value={input}
             onChange={handleInputChange}
             placeholder="Say something..."
+            ref={inputRef}
           />
           <Button type="submit">Send</Button>
         </form>
