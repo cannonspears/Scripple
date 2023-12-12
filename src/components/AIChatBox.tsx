@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { useChat } from "ai/react";
+import { XCircle } from "lucide-react";
 
 interface AIChatBoxProps {
   open: boolean;
@@ -24,7 +25,9 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
         open ? "fixed" : "hidden",
       )}
     >
-      Chatbox
+      <button onClick={onClose} className="mb-1 ms-auto block">
+        <XCircle size={30} />
+      </button>
     </div>
   );
 }
