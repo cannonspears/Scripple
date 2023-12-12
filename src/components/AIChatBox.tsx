@@ -72,6 +72,12 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
               }}
             />
           )}
+          {!error && messages.length === 0 && (
+            <div className="flex h-full items-center justify-center gap-3">
+              <Bot />
+              Ask the AI a question to get started.
+            </div>
+          )}
         </div>
         <form onSubmit={handleSubmit} className="m-3 flex gap-1">
           <Button
