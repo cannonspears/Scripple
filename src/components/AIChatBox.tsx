@@ -64,6 +64,14 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
               }}
             />
           )}
+          {error && (
+            <ChatMessage
+              message={{
+                role: "assistant",
+                content: "Something went wrong. Please try again.",
+              }}
+            />
+          )}
         </div>
         <form onSubmit={handleSubmit} className="m-3 flex gap-1">
           <Button
