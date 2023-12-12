@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { useChat } from "ai/react";
-import { Bot, XCircle } from "lucide-react";
+import { Bot, Trash, XCircle } from "lucide-react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Message } from "ai";
@@ -56,11 +56,22 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
           ))}
         </div>
         <form onSubmit={handleSubmit} className="m-3 flex gap-1">
+          <Button
+            title="Clear chat"
+            variant="outline"
+            size="icon"
+            className="shrink-0"
+            type="button"
+            onClick={() => setMessages([])}
+          >
+            <Trash />
+          </Button>
           <Input
             value={input}
             onChange={handleInputChange}
             placeholder="Say something..."
             ref={inputRef}
+            className="mx-2"
           />
           <Button type="submit">Send</Button>
         </form>
