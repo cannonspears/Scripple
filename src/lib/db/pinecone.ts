@@ -11,4 +11,4 @@ const pinecone = new Pinecone({
   apiKey,
 });
 
-export const notesIndex = pinecone.Index("notesgpt");
+export const notesIndex = pinecone.Index("scripple");

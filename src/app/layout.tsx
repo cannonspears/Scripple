@@ -7,8 +7,9 @@ import { ThemeProvider } from "./ThemeProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "notesGPT",
-  description: "Notes app powered by chatGPT",
+  title: "Scripple",
+  description:
+    "Revolutionize scripting with Scripple: the AI-driven app for writing and managing video scripts. Powered by OpenAI's GPT, tailor-made for Instagram Reels, TikTok, and YouTube Shorts.",
 };
 
 export default function RootLayout({

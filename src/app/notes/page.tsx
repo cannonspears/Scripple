@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import Note from "@/components/Note";
 
 export const metadata: Metadata = {
-  title: "notesGPT | Home",
+  title: "Scripple | Home",
 };
 
 export default async function NotesPage() {
