@@ -1,5 +1,6 @@
 import Image from "next/image";
 import logo from "@/assets/logo.png";
+import fullLogo from "@/assets/full-logo-tp.png";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { auth } from "@clerk/nextjs";
@@ -19,18 +20,13 @@ export default function Home() {
         </span>
       </div>
       <div className="max-w-prose text-center">
-        <p>
-          Revolutionize scripting with Scripple: the AI-driven app for writing
-          and managing video scripts.
-        </p>
-        <p>
-          Powered by OpenAI GPT, tailor-made for Instagram Reels, TikTok, and
-          YouTube Shorts.
-        </p>
+        <p>The AI-driven app for writing and managing video scripts for</p>
+        <p>Instagram Reels, TikTok, and YouTube Shorts.</p>
       </div>
       <Button size="lg" asChild>
         <Link href="/notes">Open</Link>
       </Button>
+      {/* <Image src={fullLogo} alt="Scripple mascot" width={500} height={500} /> */}
     </main>
   );
 }
