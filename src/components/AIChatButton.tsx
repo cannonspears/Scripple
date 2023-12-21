@@ -3,8 +3,6 @@ import AIChatBox from "./AIChatBox";
 import { Button } from "./ui/button";
 import { Bot } from "lucide-react";
 
-interface AIChatButtonProps {}
-
 export default function AIChatButton() {
   const [chatBoxOpen, setChatBoxOpen] = useState(false);
 
@@ -12,7 +10,7 @@ export default function AIChatButton() {
     <>
       <Button onClick={() => setChatBoxOpen(true)}>
         <Bot size={20} className="mr-2" />
-        AI Chat
+        Ask AI
       </Button>
       <AIChatBox open={chatBoxOpen} onClose={() => setChatBoxOpen(false)} />
     </>
