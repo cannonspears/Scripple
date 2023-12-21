@@ -35,13 +35,10 @@ export async function POST(req: Request) {
       },
     });
 
-    console.log("Relevant notes found: ", relevantNotes);
-
     const systemMessage: ChatCompletionSystemMessageParam = {
       role: "system",
       content:
-        "You are an intelligent note-taking app. You answer the user's question based on their existing notes. " +
-        "The relevant notes for this query are:\n" +
+        "You are ScrippleBot, an AI specialized in writing concise scripts for 30-second videos for Instagram. Based on user-provided notes, topics, and branding, craft a short script with a short hook, a detailed body, and a direct call to action. Do not label hook, body, or call to action; just provide the content. Do not go over 70 words. Here are the relevant notes:\n" +
         relevantNotes
           .map((note) => `Title: ${note.title}\n\nContent:\n${note.content}`)
           .join("\n\n"),
@@ -49,6 +46,7 @@ export async function POST(req: Request) {
 
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
+      max_tokens: 270,
       stream: true,
       messages: [systemMessage, ...messagesTruncated],
     });
