@@ -40,7 +40,7 @@ export default function NavBar() {
               onClick={() => setShowAddEditNoteDialog(true)}
             >
               <Plus size={20} className="mr-2" />
-              Add Note
+              Scripple
             </Button>
             <AIChatButton />
           </div>

@@ -21,7 +21,7 @@ export default async function NotesPage() {
       ))}
       {allNotes.length === 0 && (
         <div className="col-span-full text-center">
-          {"You don't have any notes yet."}
+          {"You don't have any Scripples yet."}
         </div>
       )}
     </div>
