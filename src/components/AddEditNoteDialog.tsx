@@ -100,7 +100,9 @@ export default function AddEditNoteDialog({
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{noteToEdit ? "Edit Note" : "Add Note"}</DialogTitle>
+          <DialogTitle>
+            {noteToEdit ? "Edit Scripple" : "Add Scripple"}
+          </DialogTitle>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
@@ -109,9 +111,9 @@ export default function AddEditNoteDialog({
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Note Title</FormLabel>
+                  <FormLabel>Title</FormLabel>
                   <FormControl>
-                    <Input placeholder="Note title" {...field} />
+                    <Input placeholder="Title" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -122,9 +124,9 @@ export default function AddEditNoteDialog({
               name="content"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Note Content</FormLabel>
+                  <FormLabel>Content</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="Note content" {...field} />
+                    <Textarea placeholder="Content" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
