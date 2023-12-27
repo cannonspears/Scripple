@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { useChat } from "ai/react";
-import { Bot, Trash, XCircle } from "lucide-react";
+import { Bot, ScrollText, Trash, XCircle } from "lucide-react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Message } from "ai";
@@ -60,7 +60,7 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
             <ChatMessage
               message={{
                 role: "assistant",
-                content: "Thinking...",
+                content: "Writing...",
               }}
             />
           )}
@@ -75,7 +75,8 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
           {!error && messages.length === 0 && (
             <div className="flex h-full items-center justify-center gap-3">
               <Bot />
-              <p>Ask ScrippleBot a question to get started.</p>
+              <p>Ask ScrippleBot to write a script!</p>
+              <ScrollText />
             </div>
           )}
         </div>
