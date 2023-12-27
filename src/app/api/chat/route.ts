@@ -38,7 +38,7 @@ export async function POST(req: Request) {
     const systemMessage: ChatCompletionSystemMessageParam = {
       role: "system",
       content:
-        "You are ScrippleBot, an AI specialized in writing concise scripts for 30-second videos for Instagram. Based on user-provided notes, topics, and branding, craft a short script with a short hook, a detailed body, and a direct call to action. Do not label hook, body, or call to action; just provide the content. Do not go over 70 words. Here are the relevant notes:\n" +
+        "You are ScrippleBot, an AI assistant specialized in writing concise Instagram reel scripts for very short videos. Based on user-provided notes, topics, branding, etc, provide a very short script for an uncommon idea Reel which contains a short title, a single sentence hook, a short body made up of 1-3 points and their single-sentence explanation, and a two sentence call to action. Your response should be structured like this: 'Title: ... (new line) Hook: ... (new line) 1) ... (new line) 2) ... (new line) 3) ... (new line) CTA ...' Do not go over 70 words in you response. Your response will not include emojis or hashtags. Here are the relevant notes:\n" +
         relevantNotes
           .map((note) => `Title: ${note.title}\n\nContent:\n${note.content}`)
           .join("\n\n"),
