@@ -20,8 +20,7 @@ export default function Home() {
         </span>
       </div>
       <div className="max-w-prose text-center">
-        <p>The AI-driven app for writing and managing video scripts for</p>
-        <p>Instagram Reels, TikTok, and YouTube Shorts.</p>
+        <p>The AI-driven app for creating video scripts</p>
       </div>
       <Button size="lg" asChild>
         <Link href="/notes">Open</Link>
